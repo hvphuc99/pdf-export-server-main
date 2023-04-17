@@ -38,17 +38,17 @@ module.exports = class WebServer extends ExportServer {
         app.use(bodyParser.urlencoded({ extended : false, limit : options.maximum || '50mb' }));
 
         //Set CORS
-        if (options.cors !== 'false') {
-            options.cors = options.cors || '*';
+        // if (options.cors !== 'false') {
+        //     options.cors = options.cors || '*';
 
-            console.log(`Access-Control-Allow-Origin: ${options.cors}`);
+        //     console.log(`Access-Control-Allow-Origin: ${options.cors}`);
 
             app.use((req, res, next) => {
                 res.header('Access-Control-Allow-Origin','*');
                 res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
                 next();
             });
-        }
+        // }
 
         //Set target to load resources from
         if (options.resources) {
